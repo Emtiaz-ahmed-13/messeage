@@ -1,4 +1,5 @@
 import 'next-auth'
+type UserId = string
 
 declare module 'next-auth' {
     interface User {
