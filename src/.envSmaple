@@ -1,0 +1,9 @@
+MONGODB_URI="mongodb+srv://emtiaz2060:XF5YtGkTCaFHJwka@cluster0.bxnwusk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+RESEND_API_KEY=""
+NEXTAUTH_SECRET=rfuefu
+OPENAI_KEY=""
+PORT=3000
+
+# username: emtiaz2060
+# password : XF5YtGkTCaFHJwka
+
