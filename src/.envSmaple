@@ -1,4 +1,4 @@
-MONGODB_URI="mongodb+srv://emtiaz2060:XF5YtGkTCaFHJwka@cluster0.bxnwusk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+MONGODB_URI="mongodb+srv://emtiaz2060:XF5YtGkTCaFHJwka@cluster0.bxnwusk.mongodb.netretryWrites=true&w=majority&appName=Cluster0";
 RESEND_API_KEY=""
 NEXTAUTH_SECRET=rfuefu
 OPENAI_KEY=""
