@@ -8,7 +8,9 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import { useDebounceValue } from 'usehooks-ts'
 import { useToast } from "@/components/ui/use-toast"
-import { useRouter } from "next/router";
+import { useRouter } from 'next/navigation'
+
+
 
 import { singUpSchema } from "@/schemas/signUpSchema"
 
@@ -37,7 +39,7 @@ const page = () => {
 
   const debouncedUsername = useDebounceValue(username, 300);
   const { toast } = useToast();
-  //const router = useRouter();
+  const router = useRouter();
 
   // zod implementation
 
@@ -78,7 +80,7 @@ const page = () => {
         title: 'Success',
         description: response.data.message,
       });
-      //router.replace(`/verify/${username}`);
+      router.replace(`/verify/${username}`);
       setIsSubmitting(false);
     } catch (error) {
       console.error("Error signing up", error);
@@ -87,7 +89,7 @@ const page = () => {
       toast({
         title: 'Signup failed',
         description: errorMessage,
-        variant: "destructive" // Fix: Change "destrutive" to "destructive"
+        variant: "destructive" 
       });
       setIsSubmitting(false);
     }

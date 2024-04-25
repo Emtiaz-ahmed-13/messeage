@@ -1,6 +1,7 @@
 import {resend} from "@/lib/resend";
 import VerificationEmail from "../../emails/VerificationEmail";
 import { ApiResponse } from "@/types/ApiResponse";
+import { Resend } from "resend";
 
 export async function sendVerificationEmail(
     email:string,
@@ -8,14 +9,13 @@ export async function sendVerificationEmail(
     verifycode:string
 ): Promise<ApiResponse> {
     try {
-        await resend.emails.send({
-            from: 'Acme <onboarding@resend.dev>',
-            to: ['delivered@resend.dev'],
-            subject: 'Hello world',
-            text: 'Hello world', 
-            react: VerificationEmail({ username, otp: verifycode}),
-            
-          });
+        const resend = new Resend('process.env.RESEND_API_KEY');    
+        resend.emails.send({
+          from: 'onboarding@resend.dev',
+          to: 'emtiaz2060@gmail.com',
+          subject: 'Hello World',
+          html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
+        });
         return { success: true, message: 'Verification email sent successfully' }
     } catch (emailError) {
         console.error("Error sending verification email:", emailError);

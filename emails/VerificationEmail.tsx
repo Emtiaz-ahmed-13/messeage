@@ -1,6 +1,7 @@
 import React from 'react';
 import { Html, Head, Font, Preview, Section, Row, Heading, Text } from '@react-email/components'; 
 
+
 interface VerificationEmailProps {
     username: string;
     otp: string;
