@@ -13,14 +13,12 @@ export async function sendVerificationEmail(
         resend.emails.send({
           from: 'onboarding@resend.dev',
           to: 'emtiaz2060@gmail.com',
-          subject: 'Hello World',
-          html: '<p>Congrats on sending your <strong>first email</strong>!</p>'
+          subject: 'Anynous Verification Email',
+          react:VerificationEmail({username,otp:verifycode}),
         });
         return { success: true, message: 'Verification email sent successfully' }
     } catch (emailError) {
         console.error("Error sending verification email:", emailError);
         return { success: false, message: 'Failed to send verification email' };
     }
-
-
 }
