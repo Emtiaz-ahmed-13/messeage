@@ -38,15 +38,17 @@ export async function POST(request: Request) {
                 } else {
                     // If the user is not verified, update password and verification code
                     const hashedPassword = await bcrypt.hash(password, 10);
-                    existingUserByEmail.password = hashedPassword;
+                    existingUserByEmail.password = hashedPassword; // Update password... 
+                    existingUserByEmail.verifyCode= verifyCode; 
                     existingUserByEmail.verifyCodeExpiry = new Date(verifyCode); // Convert verifyCode to a Date object
-                    existingUserByEmail.save();
+                    await existingUserByEmail.save();
                 }
             } else {
                 // If no user with the email exists, create a new user
                 const hashedPassword = await bcrypt.hash(password, 10);
                 const expiryDate = new Date();
                 expiryDate.setHours(expiryDate.getHours() + 1);
+                //object milse tai or vitor changese hoya tai aikhne const likhar poreiioo.. changes kora gelo....!!!!
 
                 const newUser = new UserModel({
                     username,
@@ -62,7 +64,7 @@ export async function POST(request: Request) {
                 await newUser.save();
             }
 
-            // Send a verification email
+            // Send a verification email...
             const emailResponse = await sendVerificationEmail(
                 email,
                 username,
@@ -80,7 +82,7 @@ export async function POST(request: Request) {
             // If everything is successful, return a success response
             return Response.json({
                 success: true,
-                message: "User registered successfully"
+                message: "User registered successfully please verif your email..."
             }, { status: 201 });
         }
     } catch (error) {

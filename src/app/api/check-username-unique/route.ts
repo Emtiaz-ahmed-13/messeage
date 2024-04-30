@@ -4,7 +4,7 @@ import { z } from 'zod';
 import { usernameValidation } from '@/schemas/signUpSchema';
 
 const UsernameQuerySchema = z.object({
-  username: usernameValidation,
+  username: usernameValidation
 });
 
 export async function GET(request: Request) {
@@ -12,11 +12,14 @@ export async function GET(request: Request) {
 
   try {
     const { searchParams } = new URL(request.url);
-    const queryParams = {
+    const queryParam = {
       username: searchParams.get('username'),
     };
 
-    const result = UsernameQuerySchema.safeParse(queryParams);
+    //validate with zod.....
+
+    const result = UsernameQuerySchema.safeParse(queryParam);
+
 
     if (!result.success) {
       const usernameErrors = result.error.format().username?._errors || [];
@@ -48,6 +51,7 @@ export async function GET(request: Request) {
         { status: 200 }
       );
     }
+
     return Response.json(
       {
         success: true,

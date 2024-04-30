@@ -12,7 +12,7 @@ export async function sendVerificationEmail(
         const resend = new Resend('process.env.RESEND_API_KEY');    
         resend.emails.send({
           from: 'onboarding@resend.dev',
-          to: 'emtiaz2060@gmail.com',
+          to: email,
           subject: 'Anynous Verification Email',
           react:VerificationEmail({username,otp:verifycode}),
         });
